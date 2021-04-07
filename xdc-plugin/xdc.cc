@@ -377,7 +377,7 @@ struct ReadXdc : public Frontend {
         //
         Tcl_Interp *interp = yosys_get_tcl_interp();
         Tcl_Eval(interp, "rename unknown _original_unknown");
-        Tcl_Eval(interp, "proc unknown args { return \\[[lindex $args 0]\\] }");
+        Tcl_Eval(interp, "proc unknown args { return [lindex $args 1] }");
         if (Tcl_EvalFile(interp, args[argidx].c_str()) != TCL_OK) {
             log_cmd_error("TCL interpreter returned an error: %s\n", Tcl_GetStringResult(interp));
         }
